@@ -38,4 +38,14 @@ public class TransactionServiceImpl implements TransactionService{
         }
         throw new RuntimeException("Transaction not found for ID "+id);
     }
+
+    @Override
+    public void deleteTransaction(Long id) {
+        eRepository.deleteById(id);
+    }
+
+    @Override
+    public Transaction updateTransaction(Transaction transaction) {
+        return eRepository.save(transaction);
+    }
 }

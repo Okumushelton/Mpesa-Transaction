@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.math.BigInteger;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -26,4 +28,12 @@ public class Transaction {
     @Column(name = "mpesa_Response")
     private String mpesa_Response;
     // Getters and Setters
+
+    //Create Timestamps in the DataBase
+    @CreationTimestamp()
+    @Column(name = "created_At", nullable = false, updatable = false)
+    private Date createdA;
+    @UpdateTimestamp
+    @Column(name = "updated_At", nullable = false, updatable = false)
+    private Date updatedAt;
 }

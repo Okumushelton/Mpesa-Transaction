@@ -33,12 +33,12 @@ public class TransactionController {
 
     @PutMapping("/transactions/{id}")
     public Transaction updateTransaction(@PathVariable Long id, @RequestBody Transaction transaction){
-        System.out.println("Transaction Updated Successfully");
-        return transaction;
+        transaction.setId(id);
+        return eService.updateTransaction(transaction);
     }
 
-    @DeleteMapping("transactions")
-    public String deleteTransaction (@RequestParam Long id){
-        return "Deleted Transaction details for user " + id;
+    @DeleteMapping("/transactions")
+    public void deleteTransaction (@RequestParam Long id){
+        eService.deleteTransaction(id);
     }
 }

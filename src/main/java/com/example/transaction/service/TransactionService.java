@@ -10,4 +10,8 @@ public interface TransactionService {
     Transaction saveTransaction (Transaction transaction);
 
     Transaction getSingleTransaction(Long id);
+
+    void deleteTransaction (Long id);
+
+    Transaction updateTransaction (Transaction transaction);
 }
