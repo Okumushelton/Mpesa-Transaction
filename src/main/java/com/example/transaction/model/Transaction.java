@@ -14,6 +14,9 @@ import java.util.Date;
 @ToString
 @Entity
 @Table (name = "transactions_tbl")
+
+// This Model Creates Database Entities
+
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
