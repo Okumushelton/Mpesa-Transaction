@@ -15,6 +15,9 @@ public class TransactionController {
     @Autowired
     private TransactionService eService;
 
+    @Autowired
+    private TransactionService transactionService;
+
     //HTTP Request to get data from the database
     @GetMapping("/transactions")
     public List<Transaction> getTransactions() {
@@ -33,17 +36,19 @@ public class TransactionController {
         return eService.saveTransaction(transaction);
     }
 
+
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestParam String phoneNumber, @RequestParam Double amount) {
-        Transaction transaction = transactionService.createTransaction(phoneNumber, amount);
-        // Call Daraja API to initiate transaction
-        return new ResponseEntity<>(transaction, HttpStatus.CREATED);
+    public Transaction createTransaction(@RequestBody Transaction transaction) {
+        Transaction savedTransaction = transactionRepository.save(transaction);
+        String response = transactionService.initiateCheckout(transaction.getPhoneNumber(), transaction.getAmount());
+        savedTransaction.setStatus(response);
+        return transactionRepository.save(savedTransaction);
     }
 
+//    endpoint to handle the callback from Safaricom
     @PostMapping("/callback")
-    public ResponseEntity<String> handleCallback(@RequestBody CallbackRequest callbackRequest) {
-        // Process callback and update transaction status
-        return new ResponseEntity<>("Callback received", HttpStatus.OK);
+    public void handleCallback(@RequestBody TransactionCallbackResponse callbackResponse) {
+        //  update the transaction status based on callbackResponse
     }
 
     @PutMapping("/transactions/{id}")

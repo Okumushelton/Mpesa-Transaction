@@ -26,10 +26,8 @@ public class Transaction {
     private String phone_Number;
     @Column(nullable = false)
     private double amount;
-    @Column(name = "mpesa_Request_Status")
+    @Column(name = "status")
     private String mpesa_Request_Status;
-    @Column(name = "mpesa_Response")
-    private String mpesa_Response;
     // Getters and Setters
 
     //Create Timestamps in the DataBase
