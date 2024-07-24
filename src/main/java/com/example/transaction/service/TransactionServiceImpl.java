@@ -15,13 +15,13 @@ public class TransactionServiceImpl implements TransactionService{
     @Autowired
     private TransactionRepository eRepository;
 
-    public Transaction createTransaction(String phone_Number, Double amount) {
-        Transaction transaction = new Transaction();
-        transaction.setPhoneNumber(phone_Number);
-        transaction.setAmount(amount);
-        transaction.setStatus("PENDING");
-        return eRepository.save(transaction);
-    }
+//    public Transaction createTransaction(String phone_Number, Double amount) {
+//        Transaction transaction = new Transaction();
+//        transaction.setPhoneNumber(phone_Number);
+//        transaction.setAmount(amount);
+//        transaction.setStatus("PENDING");
+//        return eRepository.save(transaction);
+//    }
 
 
 
