@@ -1,5 +1,5 @@
 # mpesa-transaction
-This is a java project on how to integrate to mpesa using springboot. This project makes use of the springboot docker-compose dependancy to automatically configure database settings.
+This repository presents a robust Java application designed to facilitate the integration of M-Pesa with Spring Boot. By utilizing the Spring Boot Docker Compose dependency, this project automates the configuration of database settings, ensuring a streamlined setup process.
 
 # This repo covers the following M-Pesa APIs
 * C2B Register URLs
